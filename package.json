@@ -1,21 +1,21 @@
 {
-  "name": "elliptic",
-  "version": "6.6.1",
+  "name": "@pezkuwi/elliptic",
+  "version": "6.6.2",
   "description": "EC cryptography",
   "main": "lib/elliptic.js",
   "files": [
-    "lib"
+    "lib",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "lint": "eslint lib test",
     "lint:fix": "npm run lint -- --fix",
-    "unit": "istanbul test _mocha --reporter=spec test/index.js",
-    "test": "npm run lint && npm run unit",
-    "version": "grunt dist && git add dist/"
+    "unit": "mocha --reporter=spec test/index.js",
+    "test": "npm run lint && npm run unit"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:indutny/elliptic"
+    "url": "git+https://github.com/pezkuwichain/elliptic.git"
   },
   "keywords": [
     "EC",
@@ -26,31 +26,31 @@
   "author": "Fedor Indutny <fedor@indutny.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/indutny/elliptic/issues"
+    "url": "https://github.com/pezkuwichain/elliptic/issues"
   },
-  "homepage": "https://github.com/indutny/elliptic",
-  "devDependencies": {
-    "brfs": "^2.0.2",
-    "coveralls": "^3.1.0",
-    "eslint": "^7.6.0",
-    "grunt": "^1.2.1",
-    "grunt-browserify": "^5.3.0",
-    "grunt-cli": "^1.3.2",
-    "grunt-contrib-connect": "^3.0.0",
-    "grunt-contrib-copy": "^1.0.0",
-    "grunt-contrib-uglify": "^5.0.0",
-    "grunt-mocha-istanbul": "^5.0.2",
-    "grunt-saucelabs": "^9.0.1",
-    "istanbul": "^0.4.5",
-    "mocha": "^8.0.1"
-  },
+  "homepage": "https://github.com/pezkuwichain/elliptic",
   "dependencies": {
-    "bn.js": "^4.11.9",
+    "bn.js": "^4.12.3",
     "brorand": "^1.1.0",
     "hash.js": "^1.0.0",
     "hmac-drbg": "^1.0.1",
     "inherits": "^2.0.4",
     "minimalistic-assert": "^1.0.1",
     "minimalistic-crypto-utils": "^1.0.1"
+  },
+  "devDependencies": {
+    "@noble/curves": "^1.9.7",
+    "eslint": "^8.57.1",
+    "mocha": "^12.0.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "overrides": {
+    "mocha": {
+      "serialize-javascript": "^7.1.3",
+      "glob": "^14.0.2",
+      "minimatch": "^11.0.1"
+    }
   }
 }
