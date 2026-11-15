@@ -1,3 +1,12 @@
+> **@pezkuwi/elliptic** is a maintained fork of [indutny/elliptic](https://github.com/indutny/elliptic) 6.6.1
+> (MIT, unchanged API). Its deterministic ECDSA nonce is derived from the full RFC 6979 DRBG output, which fixes
+> CVE-2025-14505 / GHSA-848j-6mx2-7j84 (when the nonce candidate began with a zero byte, the byte was dropped
+> before the bits beyond the curve order were shifted out, so on curves whose order is not a whole number of bytes,
+> such as P-521, the signature used a wrong nonce; a faulty and a correct signature of the same message reveal the
+> private key), for which no upstream release exists. Use it in place of `elliptic` with a resolution:
+> `"resolutions": { "elliptic": "npm:@pezkuwi/elliptic@^6.6.2" }` (yarn) or
+> `"overrides": { "elliptic": "npm:@pezkuwi/elliptic@^6.6.2" }` (npm).
+
 # Elliptic [![Build Status](https://secure.travis-ci.org/indutny/elliptic.png)](http://travis-ci.org/indutny/elliptic) [![Coverage Status](https://coveralls.io/repos/indutny/elliptic/badge.svg?branch=master&service=github)](https://coveralls.io/github/indutny/elliptic?branch=master) [![Code Climate](https://codeclimate.com/github/indutny/elliptic/badges/gpa.svg)](https://codeclimate.com/github/indutny/elliptic)
 
 [![Saucelabs Test Status](https://saucelabs.com/browser-matrix/gh-indutny-elliptic.svg)](https://saucelabs.com/u/gh-indutny-elliptic)
